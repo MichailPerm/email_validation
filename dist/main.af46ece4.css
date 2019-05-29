@@ -1,0 +1,11 @@
+.email {
+    width: 300rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.disabled {
+    display: none;
+}
+
+/*# sourceMappingURL=/main.af46ece4.css.map */

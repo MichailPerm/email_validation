@@ -1,0 +1,9 @@
+.email {
+    width: 300rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.disabled {
+    display: none;
+}

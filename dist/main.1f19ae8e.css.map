@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.scss","components\\form\\form.scss"],"names":[],"mappings":"AAEA;EACI,OAHO;;ACAX;EACE;EACA;EACA","file":"main.1f19ae8e.css","sourceRoot":"..\\src","sourcesContent":["$color_h1: tomato;\r\n\r\nh1 {\r\n    color: $color_h1;\r\n}","form {\r\n  width: 15vw;\r\n  display: flex;\r\n  flex-wrap: wrap\r\n}"]}

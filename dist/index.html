@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/main.af46ece4.css">
+    <title>Document</title>
+<script src="/main.af46ece4.js"></script></head>
+<body>
+    <script>// Определяем параметры, необходимые для работы с api
+var access_key = "741802ca73c63e5d1fa25eaab75eb25b";
+var url = "http://apilayer.net/api/check";
+
+function setMessage(message) {
+  /*
+   * Функция для установки сообщения в <p> с id = message
+  */
+  var form = document.getElementsByClassName("email");
+  form[0].setAttribute("class", "email disabled");
+  form[1].setAttribute("class", "email");
+  document.getElementById("message").innerText = message;
+}
+
+function verifyEmail(event) {
+  // Отправка запроса на api валидации с обработкой результата
+  var email = event.target.value;
+
+  if (event.code === "Enter") {
+    var req = "".concat(url, "?access_key=").concat(access_key, "&email=").concat(email, "&smtp=1&format=1");
+    fetch(req).then(function (res) {
+      res.json().then(function (data) {
+        if (data.format_valid === true) {
+          // Вывод сообщения о то, что адрес корректен
+          setMessage("E-mail ".concat(email, " \u043A\u043E\u0440\u0440\u0435\u043A\u0442\u0435\u043D."));
+        } else {
+          // Вывод сообщения о то, что адрес некорректен
+          setMessage("E-mail ".concat(email, " \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u0435\u043D!"));
+        }
+      });
+    }).catch(function (error) {
+      // Выводится всплывающий диалог с сообщением об ошибке при отправке запроса
+      alert("Во время верификации email произошла ошибка: ", error);
+    });
+  }
+}</script>
+    <div class="email">
+        <input type="text" name="email" id="email" onkeypress="verifyEmail(event)" placeholder="example@email.com" title="Нажмите Enter для отправки">
+    </div>
+    <div class="email disabled">
+        <p id="message"></p>
+    </div>
+</body>
+</html>
